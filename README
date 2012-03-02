@@ -1,0 +1,3 @@
+Page flipping object for huge number of pages. Uses location hash so back/forward buttons will work normally.
+
+Demo see http://aquaron.com/jquery/aqPaging.
