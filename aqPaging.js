@@ -10,9 +10,9 @@ $.fn.aqPaging = function($options) {
 		max: 10,
 		current: 1,
 		urlHash: false
-	},$options);
+	},$options),
 
-	var _draw = function($ob) {
+	_draw = function($ob) {
 		$ob.empty();
 
 		var _s = 1,
@@ -83,7 +83,7 @@ $.fn.aqPaging = function($options) {
 			return false;
 		}
 
-		var _ob = $('.aqPaging', this);
+		var _ob = $('.aqPaging', this), _p;
 
 		if (!_ob.length) {
 			_ob = $('<div\/>')
@@ -115,21 +115,21 @@ $.fn.aqPaging = function($options) {
 			return false;
 		});
 
-        if (_o.urlHash) {
-            $(window).unbind('hashchange')
+		if (_o.urlHash) {
+			$(window).unbind('hashchange')
 			.bind('hashchange', function($e) {
-                var _page = location.hash.substring(1);
-                if (_o.current !== _page) {
-                    _ob.find('A:first').trigger('click', [_page]);
-                }
-            });
+				var _page = location.hash.substring(1);
+				if (_o.current !== _page) {
+					_ob.find('A:first').trigger('click', [_page]);
+				}
+			});
 
-            var _p = parseInt(location.hash.replace(/[^0-9]/g, ''), 10);
-            if (_p && _o.current !== _p) {
+			_p = parseInt(location.hash.replace(/[^0-9]/g, ''), 10);
+			if (_p && _o.current !== _p) {
 				_ob.find('A:first').trigger('click', [_p]);
-            }
-        }
+			}
+		}
 	});
 };
 
-})(jQuery);
+}(jQuery));
